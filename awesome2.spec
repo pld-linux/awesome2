@@ -9,7 +9,7 @@ Group:		X11/Window Managers
 Source0:	http://awesome.naquadah.org/download/awesome-%{version}.tar.bz2
 # Source0-md5:	bc9d115e70607c51ed55d7e1d6112c5c
 Source1:	%{name}-xsession.desktop
-URL:		http://awesome.naquadah.org
+URL:		http://awesome.naquadah.org/
 BuildRequires:	asciidoc
 BuildRequires:	cairo-devel
 BuildRequires:	doxygen
@@ -59,8 +59,12 @@ install -d $RPM_BUILD_ROOT%{_datadir}/xsessions
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
 mv $RPM_BUILD_ROOT%{_datadir}/awesome{,2}
-for i in $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man{1,5}}/*; do mv $i $(dirname $i)/$(echo $(basename $i) | sed "s|awesome|awesome2|"); done
+
+for i in $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man{1,5}}/*; do
+	mv $i $(dirname $i)/$(echo $(basename $i) | sed "s|awesome|awesome2|");
+done
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_datadir}/xsessions/%{name}.desktop
 
