@@ -2,12 +2,12 @@ Summary:	Awesome Window Manager
 Summary(hu.UTF-8):	awesome ablakkezelő
 Summary(pl.UTF-8):	Zarządca okien X - Awesome
 Name:		awesome2
-Version:	2.3.4
+Version:	2.3.6
 Release:	0.1
 License:	GPL v2
 Group:		X11/Window Managers
 Source0:	http://awesome.naquadah.org/download/awesome-%{version}.tar.bz2
-# Source0-md5:	bc9d115e70607c51ed55d7e1d6112c5c
+# Source0-md5:	29b07dbb801b0907514844b88f9bca6e
 Source1:	%{name}-xsession.desktop
 URL:		http://awesome.naquadah.org/
 BuildRequires:	asciidoc
@@ -67,6 +67,8 @@ for i in $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man{1,5}}/*; do
 done
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_datadir}/xsessions/%{name}.desktop
+
+rm -rf $RPM_BUILD_ROOT%{_docdir}/awesome
 
 %clean
 rm -rf $RPM_BUILD_ROOT
